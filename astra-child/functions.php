@@ -13,7 +13,6 @@ function astra_child_enqueue_scripts_styles() {
 }
 
 
-
 /*
 * 
 * Customizer Options
@@ -47,3 +46,45 @@ require get_theme_file_path( 'customizations/classes/gutenberg/gutenberg.php' );
 */
 require get_theme_file_path( 'customizations/shortcodes/related_posts.php' );
 
+
+//MODIFICO META TEMA ASTRA
+add_filter( 'astra_single_post_meta', 'custom_post_meta' );
+add_filter( 'astra_blog_post_meta', 'custom_post_meta' );
+
+function custom_post_meta( $old_meta ) {
+	 $post_meta = astra_get_option( 'blog-single-meta' );
+	 if ( !$post_meta ) return $old_meta;
+
+	 $new_output = astra_get_post_meta( $post_meta, "|" );
+	 if ( !$new_output ) return $old_meta;
+ 
+	 return "<div class='entry-meta'>$new_output</div>";
+}
+
+
+//SOSTITUISCO LINK AUTORE CON PAGINA ABOUT
+add_filter('author_link', 'my_custom_author_link', 10, 3);
+function my_custom_author_link($link, $author_id, $author_nicename) {
+	$acf_user = "user_{$author_id}";
+	$author_page_id = get_field('author_page', $acf_user);
+	$link = get_the_permalink($author_page_id);
+
+	return $link;
+}
+
+
+//AGGIUNGO CLASSI AL BODY DEGLI ARTICOLI PER AFFILIAZIONI
+function trp_add_body_class($classes) {
+	global $post;
+	
+	if(is_single()):
+		$affiliation = get_field('affiliation', $post);
+		if($affiliation && $affiliation != 'none'):
+			$classes[] = $affiliation;
+		endif;
+	endif;
+	
+    return $classes;
+}
+
+add_filter('body_class', 'trp_add_body_class');
