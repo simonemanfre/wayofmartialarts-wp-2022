@@ -22,7 +22,11 @@ get_header(); ?>
     <?php get_sidebar(); ?>
 <?php endif ?>
 
-    <div id="primary" <?php astra_primary_class(); ?>>
+<?php 
+//disattivo infinite scroll su articoli con affiliazione
+?>
+
+    <div <?php if(!get_field('affiliation') || get_field('affiliation') == 'none'): ?>id="primary" <?php endif; ?><?php astra_primary_class(); ?>>
 
         <?php
 
