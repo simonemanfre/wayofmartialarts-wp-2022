@@ -62,6 +62,16 @@ function custom_post_meta( $old_meta ) {
 }
 
 
+//AGGIUNGO ANNO A TITOLO SINGOLI ARTICOLI
+add_filter( 'astra_the_title_after', 'trp_add_single_title_current_year' );
+function trp_add_single_title_current_year() {
+
+	if(is_single()):
+		return " - ".date('Y')."</h1>";
+	endif;
+}
+
+
 //SOSTITUISCO LINK AUTORE CON PAGINA ABOUT
 add_filter('author_link', 'my_custom_author_link', 10, 3);
 function my_custom_author_link($link, $author_id, $author_nicename) {
