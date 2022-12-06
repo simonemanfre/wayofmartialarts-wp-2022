@@ -67,7 +67,7 @@ add_filter( 'astra_the_title_after', 'trp_add_single_title_current_year' );
 function trp_add_single_title_current_year() {
 
 	if(is_single()):
-		return " - ".date('Y')."</h1>";
+		return " (".date('Y').")</h1>";
 	endif;
 }
 
