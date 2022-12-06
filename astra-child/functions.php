@@ -47,6 +47,13 @@ require get_theme_file_path( 'customizations/classes/gutenberg/gutenberg.php' );
 require get_theme_file_path( 'customizations/shortcodes/related_posts.php' );
 
 
+//SHORTCODE PER VISUALIZZARE CURRENT YEAR
+function trp_current_year( $atts ){
+    return date('Y');
+}
+add_shortcode( 'year', 'trp_current_year' );
+
+
 //MODIFICO META TEMA ASTRA
 add_filter( 'astra_single_post_meta', 'custom_post_meta' );
 add_filter( 'astra_blog_post_meta', 'custom_post_meta' );
