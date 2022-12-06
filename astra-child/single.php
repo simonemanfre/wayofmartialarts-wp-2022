@@ -23,10 +23,10 @@ get_header(); ?>
 <?php endif ?>
 
 <?php 
-//disattivo infinite scroll su articoli con affiliazione
+//attivo infinite scroll solo se il campo è valorizzato
 ?>
 
-    <div <?php if(!get_field('affiliation') || get_field('affiliation') == 'none'): ?>id="primary" <?php endif; ?><?php astra_primary_class(); ?>>
+    <div <?php if(get_field('infinite_scroll')): ?>id="primary" <?php endif; ?><?php astra_primary_class(); ?>>
 
         <?php
 
