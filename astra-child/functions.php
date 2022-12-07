@@ -70,6 +70,7 @@ function custom_post_meta( $old_meta ) {
 
 
 //AGGIUNGO ANNO A TITOLO SINGOLI ARTICOLI
+/*
 add_filter( 'astra_the_title_after', 'trp_add_single_title_current_year' );
 function trp_add_single_title_current_year() {
 
@@ -77,6 +78,7 @@ function trp_add_single_title_current_year() {
 		return " (".date('Y').")</h1>";
 	endif;
 }
+*/
 
 
 //SOSTITUISCO LINK AUTORE CON PAGINA ABOUT
