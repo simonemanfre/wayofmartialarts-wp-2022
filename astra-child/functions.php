@@ -47,6 +47,10 @@ require get_theme_file_path( 'customizations/classes/gutenberg/gutenberg.php' );
 require get_theme_file_path( 'customizations/shortcodes/related_posts.php' );
 
 
+//AGGIUNGO SUPPORTO EXCERPT NELLE PAGINE
+add_post_type_support('page', 'excerpt');
+
+
 //CREO SHORTCODE PER VISUALIZZARE L'ANNO CORRENTE
 function trp_current_year( $atts ){
     return date('Y');
