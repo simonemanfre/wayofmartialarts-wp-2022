@@ -47,11 +47,24 @@ require get_theme_file_path( 'customizations/classes/gutenberg/gutenberg.php' );
 require get_theme_file_path( 'customizations/shortcodes/related_posts.php' );
 
 
-//SHORTCODE PER VISUALIZZARE CURRENT YEAR
+//CREO SHORTCODE PER VISUALIZZARE L'ANNO CORRENTE
 function trp_current_year( $atts ){
     return date('Y');
 }
 add_shortcode( 'year', 'trp_current_year' );
+
+//ABILITO SHORTCODE NEI TITOLI
+add_filter( 'the_title', 'do_shortcode' );
+
+//ABILITO SHORTCODE IN RANK MATH TITLE
+add_filter(
+	'rank_math/frontend/title',
+	function ( $title ) {
+		return do_shortcode( $title );}
+);
+
+//ABILITO SHORTCODE YOAST SEO TITLE
+add_filter( 'wpseo_title', 'do_shortcode' );
 
 
 //MODIFICO META TEMA ASTRA
