@@ -67,6 +67,36 @@ add_filter(
 add_filter( 'wpseo_title', 'do_shortcode' );
 
 
+//SCHEMA FAQ ULTIMATE BLOCKS
+add_action( 'wp_footer', 'trp_remove_action', 10 );
+function trp_remove_action(){
+    remove_action( 'wp_footer', 'ub_merge_faqpages', 80 );
+}
+
+function get_current_post_ID() {
+    $post_id = get_queried_object_id();
+
+	if(has_block('ub/content-toggle-block', $post_id)):
+
+		function alimentazione_schema_faqpages(){
+			$post_id = get_queried_object_id();
+			$post_url = get_the_permalink($post_id);
+
+			echo '<script type="application/ld+json">{
+					"@context":"http://schema.org/",
+					"@type":"FAQPage",
+					"IsPartOf": "' . $post_url . '#Article"
+					"mainEntity": ' . json_encode(ub_faq_questions(), JSON_UNESCAPED_SLASHES) . '}
+					</script>'; 
+					
+		}
+		add_action('wp_footer', 'alimentazione_schema_faqpages', 20);
+
+	endif;
+}
+add_action( 'template_redirect', 'get_current_post_ID' );
+
+
 //MODIFICO META TEMA ASTRA
 add_filter( 'astra_single_post_meta', 'custom_post_meta' );
 add_filter( 'astra_blog_post_meta', 'custom_post_meta' );
