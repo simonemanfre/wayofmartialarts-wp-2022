@@ -11,3 +11,36 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
 Text Domain: astra-child
 */
+
+.c-author {
+  position: relative;
+  min-height: 150px;
+  padding-left: 180px;
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+.c-author__picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-color: #b22930;
+  border-radius: 8px;
+  margin: 0;
+  overflow: hidden;
+}
+.c-author__picture img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.c-author__header {
+  margin-bottom: 16px;
+}
+.c-author__title {
+  color: #b22930;
+}
+.c-author__footer {
+  margin-top: 16px;
+}
