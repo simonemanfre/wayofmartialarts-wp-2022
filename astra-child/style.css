@@ -23,7 +23,7 @@ Text Domain: astra-child
   position: absolute;
   top: 0;
   left: 0;
-  border-color: #b22930;
+  border: 4px solid #b22930;
   border-radius: 8px;
   margin: 0;
   overflow: hidden;
@@ -36,11 +36,31 @@ Text Domain: astra-child
   object-fit: cover;
 }
 .c-author__header {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 .c-author__title {
   color: #b22930;
 }
 .c-author__footer {
+  display: flex;
   margin-top: 16px;
+  gap: 8px;
+}
+.c-author__footer a {
+  padding: 8px;
+}
+.c-author__facebook svg {
+  fill: #1877f2;
+}
+.c-author__instagram svg {
+  fill: #e4405f;
+}
+.c-author__twitter svg {
+  fill: #1da1f2;
+}
+.c-author__linkedin svg {
+  fill: #0a66c2;
+}
+.c-author__youtube svg {
+  fill: #cd201f;
 }
