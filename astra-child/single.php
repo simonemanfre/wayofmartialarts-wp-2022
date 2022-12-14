@@ -90,7 +90,7 @@ endif;
             $author_page_id = get_field('author_page', $acf_user);
             if($author_page_id):
             ?>
-                <section class="c-author" style="display: none">
+                <section class="c-author">
                     <figure class="c-author__picture">
                         <?php echo get_the_post_thumbnail($author_page_id, 'thumbnail') ?>
                     </figure>

@@ -82,11 +82,16 @@ function get_current_post_ID() {
 		function alimentazione_schema_faqpages(){
 			$post_id = get_queried_object_id();
 			$post_url = get_the_permalink($post_id);
+			//TODO ID WORDLIFT @TYPE ARTICLE
+			
 
 			echo '<script type="application/ld+json">{
 					"@context":"http://schema.org/",
 					"@type":"FAQPage",
-					"IsPartOf": "' . $post_url . '#Article"
+					"isPartOf": {
+						"@id": "' . $post_url . '",
+						"@context": "http:\/\/schema.org",
+					},
 					"mainEntity": ' . json_encode(ub_faq_questions(), JSON_UNESCAPED_SLASHES) . '}
 					</script>'; 
 					
