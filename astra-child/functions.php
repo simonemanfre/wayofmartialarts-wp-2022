@@ -104,15 +104,13 @@ function get_current_post_ID() {
 
 		function alimentazione_schema_faqpages(){
 			$post_id = get_queried_object_id();
-			$post_url = get_the_permalink($post_id);
-			//TODO ID WORDLIFT @TYPE ARTICLE
-			
+			$wordlift_id = get_field('wordlift_id', $post_id);
 
 			echo '<script type="application/ld+json">{
 					"@context":"http://schema.org/",
 					"@type":"FAQPage",
 					"isPartOf": {
-						"@id": "' . $post_url . '",
+						"@id": "' . $wordlift_id . '",
 						"@context": "http:\/\/schema.org",
 					},
 					"mainEntity": ' . json_encode(ub_faq_questions(), JSON_UNESCAPED_SLASHES) . '}
