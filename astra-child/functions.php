@@ -68,6 +68,29 @@ add_filter(
 add_filter( 'wpseo_title', 'do_shortcode' );
 
 
+//ID WORDLIFT
+add_filter('wl_after_get_jsonld', function ($jsonld, $post_id) {
+
+	//se non ho già valorizzato il campo ID Wordlift
+	if(get_post_type($post_id) == 'post'):
+		if(!get_field('wordlift_id', $post_id)):
+			foreach($jsonld as $item):
+				if($item['@type'] == 'Article' OR in_array('Article', $item['@type'])):
+
+					//inserisco ID Wordlift in ACF field
+					$id_wordlift = $item['@id'];
+					update_field('wordlift_id', $id_wordlift, $post_id);
+
+				endif;
+			endforeach;
+		endif;
+	endif;
+
+	return $jsonld;
+
+}, 10, 2);
+
+
 //SCHEMA FAQ ULTIMATE BLOCKS
 add_action( 'wp_footer', 'trp_remove_action', 10 );
 function trp_remove_action(){
